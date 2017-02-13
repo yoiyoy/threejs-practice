@@ -1,7 +1,7 @@
 {
   "name": "threejs-practice",
   "version": "0.1.0",
-  "description": "",
+  "description": "Computer Graphics와 Threejs 연습",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
