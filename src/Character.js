@@ -40,49 +40,52 @@ const pivotLimb = (object) => {
   return pivot;
 };
 
-const createHair = ({ blockSize }) => {
+const Hair = ({ blockSize }) => {
   const [width, hieht, depth] = [blockSize * 8, blockSize * 2, blockSize * 8];
   const geometry = new THREE.BoxGeometry(width, hieht, depth);
   const material = new THREE.MeshBasicMaterial({ color: 0x403C3C });
   return new THREE.Mesh(geometry, material);
 };
 
-const createHead = ({ blockSize }) => {
+const Head = ({ blockSize }) => {
   const [width, hieht, depth] = [blockSize * 8, blockSize * 6, blockSize * 8];
   const geometry = new THREE.BoxGeometry(width, hieht, depth);
   const material = new THREE.MeshBasicMaterial({ color: 0xE7D8B6 });
   return new THREE.Mesh(geometry, material);
 };
 
-const createTorso = ({ blockSize }) => {
+const Torso = ({ blockSize }) => {
   const [width, hieht, depth] = [blockSize * 8, blockSize * 12, blockSize * 4];
   const bodyGeometry = new THREE.BoxGeometry(width, hieht, depth);
   const material = new THREE.MeshBasicMaterial({ color: 0x6DD9AB });
   return new THREE.Mesh(bodyGeometry, material);
 };
 
-const createArm = ({ blockSize }) => {
+const Arm = ({ blockSize }) => {
   const [width, hieht, depth] = [blockSize * 4, blockSize * 12, blockSize * 4];
   const geometry = new THREE.BoxGeometry(width, hieht, depth);
   const material = new THREE.MeshBasicMaterial({ color: 0x7CC6C6 });
   return new THREE.Mesh(geometry, material);
 };
 
-const createLeg = ({ blockSize }) => {
+const Leg = ({ blockSize }) => {
   const [width, hieht, depth] = [blockSize * 4, blockSize * 12, blockSize * 4];
   const geometry = new THREE.BoxGeometry(width, hieht, depth);
   const material = new THREE.MeshBasicMaterial({ color: 0x558A8A });
   return new THREE.Mesh(geometry, material);
 };
 
-export default ({ blockSize }) => {
+export default ({
+  name,
+  blockSize,
+}) => {
   const character = new THREE.Object3D();
-  const hair = createHair({ blockSize });
-  const head = createHead({ blockSize });
-  const torso = createTorso({ blockSize });
-  character.name = 'character';
-  let [leftArm, rightArm] = [createArm({ blockSize }), createArm({ blockSize })];
-  let [leftLeg, rightLeg] = [createLeg({ blockSize }), createLeg({ blockSize })];
+  const hair = Hair({ blockSize });
+  const head = Head({ blockSize });
+  const torso = Torso({ blockSize });
+  character.name = name;
+  let [leftArm, rightArm] = [Arm({ blockSize }), Arm({ blockSize })];
+  let [leftLeg, rightLeg] = [Leg({ blockSize }), Leg({ blockSize })];
 
   character.add(hair);
   character.add(head);
